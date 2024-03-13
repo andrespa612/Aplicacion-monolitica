@@ -1,3 +1,5 @@
+# app.py (Backend)
+
 from flask import Flask, render_template, request, redirect, url_for
 
 app = Flask(__name__)
@@ -15,13 +17,6 @@ def index():
 def add_task():
     task_content = request.form['content']
     tasks.append(task_content)
-    return redirect(url_for('index'))
-
-# Ruta para eliminar una tarea
-@app.route('/delete_task/<int:task_id>')
-def delete_task(task_id):
-    if task_id < len(tasks):
-        del tasks[task_id]
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
