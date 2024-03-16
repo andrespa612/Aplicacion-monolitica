@@ -1,23 +1,10 @@
-# app.py (Backend)
-
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask
 
 app = Flask(__name__)
 
-# Lista de tareas
-tasks = []
-
-# Ruta principal para mostrar la lista de tareas
 @app.route('/')
-def index():
-    return render_template('index.html', tasks=tasks)
-
-# Ruta para agregar una nueva tarea
-@app.route('/add_task', methods=['POST'])
-def add_task():
-    task_content = request.form['content']
-    tasks.append(task_content)
-    return redirect(url_for('index'))
+def hello():
+    return "Hello, World!"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
